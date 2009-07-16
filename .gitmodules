@@ -1,0 +1,3 @@
+[submodule "jquery-css-transform"]
+	path = jquery-css-transform
+	url = git://github.com/zachstronaut/jquery-css-transform.git
