@@ -35,8 +35,8 @@ Load jquery-animate-css-rotate-scale.js after loading jQuery and
 jquery-css-transform.js.  For example:
 
 <script src="jquery.js" type="text/javascript"></script>
-<script src="jquery-css-transform.js" type="text/javascript></script>
-<script src="jquery-animate-css-rotate-scale.js" type="text/javascript></script>
+<script src="jquery-css-transform.js" type="text/javascript"></script>
+<script src="jquery-animate-css-rotate-scale.js" type="text/javascript"></script>
 
 For more information visit:
 http://www.zachstronaut.com/
