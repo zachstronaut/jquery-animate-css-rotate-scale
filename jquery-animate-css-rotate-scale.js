@@ -1,7 +1,8 @@
 (function ($) {
     // Monkey patch jQuery 1.3.1+ to add support for setting or animating CSS
     // scale and rotation independently.
-    // 2009 Zachary Johnson www.zachstronaut.com
+    // 2009-2010 Zachary Johnson www.zachstronaut.com
+    // Updated 2010.11.06
     var rotateUnits = 'deg';
     
     $.fn.rotate = function (val)
@@ -35,6 +36,8 @@
                 style.replace(/none|rotate\([^)]*\)/, '') + 'rotate(' + m[1] + rotateUnits + ')'
             );
         }
+        
+        return this;
     }
     
     // Note that scale is unitless.
@@ -60,6 +63,8 @@
             'transform',
             style.replace(/none|scale\([^)]*\)/, '') + 'scale(' + val + ')'
         );
+        
+        return this;
     }
 
     // fx.cur() must be monkey patched because otherwise it would always

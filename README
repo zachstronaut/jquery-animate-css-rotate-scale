@@ -14,6 +14,7 @@ This monkey patch for jQuery 1.3.1+ allows you to:
    $('#example').rotate('30deg');
    $('#example').scale(1.5);
    $('#example').rotate('45deg');
+   $('#example').scale(1.5).rotate('45deg'); // chaining
    $('#example').rotate(); // returns '45deg'
    $('#example').scale(); // returns '1.5'
 
@@ -47,6 +48,8 @@ under both MIT and GPL licenses, just like jQuery.
 -----------------------------
 Change Log
 -----------------------------
+
+2010.11.06 - Fixed chaining of scale() and rotate() by returning "this"
 
 2009.07.15 - Added to GitHub
 
