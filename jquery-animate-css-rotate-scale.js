@@ -66,6 +66,58 @@
         
         return this;
     }
+	
+	$.fn.scaley = function (val, duration, options)
+    {
+        var style = $(this).css('transform');
+        
+        if (typeof val == 'undefined')
+        {
+            if (style)
+            {
+                var m = style.match(/scaley\(([^)]+)\)/i);
+                if (m && m[1])
+                {
+                    return m[1];
+                }
+            }
+            
+            return 1;
+        }
+		
+        $(this).css(
+            'transform',
+            style.replace(/none|scaley\([^)]*\)/i, '') + 'scaley(' + val + ')'
+        );
+        
+        return this;
+    }
+	
+	$.fn.scalex = function (val, duration, options)
+    {
+        var style = $(this).css('transform');
+        
+        if (typeof val == 'undefined')
+        {
+            if (style)
+            {
+                var m = style.match(/scalex\(([^)]+)\)/i);
+                if (m && m[1])
+                {
+                    return m[1];
+                }
+            }
+            
+            return 1;
+        }
+		
+        $(this).css(
+            'transform',
+            style.replace(/none|scalex\([^)]*\)/i, '') + 'scalex(' + val + ')'
+        );
+        
+        return this;
+    }
 
     // fx.cur() must be monkey patched because otherwise it would always
     // return 0 for current rotate and scale values
@@ -80,6 +132,14 @@
         {
             return parseFloat($(this.elem).scale());
         }
+        else if (this.prop == 'scaley')
+        {
+            return parseFloat($(this.elem).scaley());
+        }
+        else if (this.prop == 'scalex')
+        {
+            return parseFloat($(this.elem).scalex());
+        }
         
         return curProxied.apply(this, arguments);
     }
@@ -92,6 +152,16 @@
     $.fx.step.scale = function (fx)
     {
         $(fx.elem).scale(fx.now);
+    }
+    
+    $.fx.step.scaley = function (fx)
+    {
+        $(fx.elem).scaley(fx.now);
+    }
+    
+    $.fx.step.scalex = function (fx)
+    {
+        $(fx.elem).scalex(fx.now);
     }
     
     /*
