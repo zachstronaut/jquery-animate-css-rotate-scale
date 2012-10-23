@@ -49,6 +49,8 @@ under both MIT and GPL licenses, just like jQuery.
 Change Log
 -----------------------------
 
+2012.10.23 - Firefox 16 transform style returns a matrix rather than a string of transform functions.  This broke the features of this jQuery patch in Firefox 16.  It should be possible to parse the matrix for both scale and rotate (especially when scale is the same for both the X and Y axis), however the matrix does have disadvantages such as using its own units and also 45deg being indistinguishable from 45+360deg.  To get around these issues, this patch tracks internally the scale, rotation, and rotation units for any elements that are .scale()'ed, .rotate()'ed, or animated.  The major consequences of this are that 1. the scaled/rotated element will blow away any other transform rules applied to the same element (such as skew or translate), and 2. the scaled/rotated element is unaware of any preset scale or rotation initally set by page CSS rules.  You will have to explicitly set the starting scale/rotation value.
+
 2010.11.26 - Updated included dependency jquery-css-transform.js to newest version
 
 2010.11.06 - Fixed chaining of scale() and rotate() by returning "this"
