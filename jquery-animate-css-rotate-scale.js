@@ -66,7 +66,7 @@
         }
         
         //is this a scale transform?
-        if(style.match(/scale\(([^)]+)\)/)){
+        if(style.match(/none|scale\([^)]*\)/) || style == undefined || style == ''){
            $(this).css('transform', style.replace(/none|scale\([^)]*\)/, '') + 'scale(' + val + ')');
         }
         
