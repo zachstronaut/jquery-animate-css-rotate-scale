@@ -53,16 +53,27 @@
                 if (m && m[1])
                 {
                     return m[1];
+                } else {
+                    var m = style.match(/matrix\(([^)]+)\)/);
+                    if (m && m[1]) {
+                        var matrixArray = m[1].split(',');
+                        return matrixArray[0];
+                    }
                 }
             }
             
             return 1;
         }
         
-        $(this).css(
-            'transform',
-            style.replace(/none|scale\([^)]*\)/, '') + 'scale(' + val + ')'
-        );
+        //is this a scale transform?
+        if(style.match(/none|scale\([^)]*\)/) || style == undefined || style == ''){
+           $(this).css('transform', style.replace(/none|scale\([^)]*\)/, '') + 'scale(' + val + ')');
+        }
+        
+        //is this a matrix transform?
+        if(style.match(/matrix\(([^)]+)\)/)){
+           $(this).css('transform', style.replace(/none|matrix\([^)]*\)/, '') + 'matrix(' + val + ', 0, 0, ' + val + ', 0, 0)');
+        }
         
         return this;
     }
