@@ -36,10 +36,10 @@
             return data.rotate + data.rotateUnits;
         }
         
-        m = val.toString().match(/^(-?\d+(\.\d+)?)(.+)?$/);
+        m = val.toString().match(/^(-?\d+(\.\d+)?(e(-|\+)?\d+)?)(.+)?$/);
         if (m) {
-            if (m[3]) {
-                data.rotateUnits = m[3];
+            if (m[5]) {
+                data.rotateUnits = m[5];
             }
             
             data.rotate = m[1];
